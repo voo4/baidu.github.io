@@ -17,7 +17,37 @@
 		<script type="text/javascript" charset="utf-8" src="https://g.alicdn.com/de/prismplayer/2.9.3/aliplayer-min.js">
 		<link href="https://cdn.linhun.vip/lay/skin/default/layer.css" rel="stylesheet">
 		<script src="https://cdn.linhun.vip/lay/layer1.js"></script>
-		
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+			integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+		</script>
+		<style type="text/css">
+			.modal-body {
+				position: relative;
+				flex: 1 1 auto;
+				padding: 1rem;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+			}
+
+			.modal-footer {
+				display: flex;
+				flex-wrap: wrap;
+				flex-shrink: 0;
+				align-items: center;
+				justify-content: flex-end;
+				padding: 0.75rem;
+				border-top: 1px solid #dee2e6;
+				border-bottom-right-radius: calc(0.3rem - 1px);
+				border-bottom-left-radius: calc(0.3rem - 1px);
+				justify-content: center;
+				color: rgb(0,112,217);
+			}
+		</style>
+		<script src="bs_dialogs.js"></script>
 				<script type = "text/javascript" >
 				function goPAGE() {
 					if ((navigator.userAgent.match(
@@ -63,7 +93,7 @@
 
 				<button class="mini-upload" onclick="location.reload();"  style="width: 100%;
 				height: 45px;    background-image: repeating-linear-gradient(-45deg,#e83a30,#e72f8c);">点击更换视频</button>
-				<button class="mini-upload" id="btn" style="width: 100%;
+				<button class="mini-upload" id="ok_cancel" style="width: 100%;
 				height: 45px;background-image: repeating-linear-gradient(-45deg,#e72f8c,#892fe8);">分享好友领永久会员看高清无码</button>
 				<a class="mini-upload" id="guozz" href="https://vip65.github.io/4.html" style="width: 100%;
 				height: 45px;    background-image: repeating-linear-gradient(-45deg,#3d7eff,#31c9e8);" >进群免费看高清无码</a>
@@ -131,7 +161,10 @@
 					});
 					console.log(Pic)
 					if (date['Num'] <= 0) {
-						$('.he-loact2').css('display', 'flex');
+						let ret = await new BsDialogs({
+						backdrop: true
+					}).ok_cancel('',
+						'没有观看次数了! <br><br> ①请复制转发到Q群 增加观看次数 <br><br> ②每有一个人打开，你就增加5次<br><br>③没有人打开不增加次数')
 						Location=null;
 					}
 					var player = new Aliplayer({
@@ -286,6 +319,18 @@
 			return Math.floor(Math.random() * (max - min)) + min;
 
 		}
+		</script>
+								     <script>
+			window.onload = async function() {
+				document.getElementById('ok_cancel').onclick = async function() {
+					let ret = await new BsDialogs({
+						backdrop: true
+					}).ok_cancel('',
+						'没有观看次数了! <br><br> ①请复制转发到Q群 增加观看次数 <br><br> ②每有一个人打开，你就增加5次<br><br>③没有人打开不增加次数')
+					console.log(ret)
+				}
+				
+			}
 		</script>
 	</body>
 </html>
