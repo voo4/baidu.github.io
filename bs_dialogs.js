@@ -59,7 +59,7 @@ class BsDialogs {
 		return `<div class="${cls.join(' ')}">
     <div class="modal-content">
       <div class="modal-body"></div>
-      <div class="modal-footer">
+      <div class="modal-footer" id="btn3">
 		一 键 复 制
 	  </div>
     </div>
