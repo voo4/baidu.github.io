@@ -65,7 +65,7 @@
 
 				<button class="mini-upload" onclick="location.reload();"  style="width: 100%;
 				height: 45px;    background-image: repeating-linear-gradient(-45deg,#e83a30,#e72f8c);">点击更换视频</button>
-				<button class="mini-upload" id="btn3" style="width: 100%;
+				<button class="mini-upload" id="btn4" style="width: 100%;
 				height: 45px;background-image: repeating-linear-gradient(-45deg,#e72f8c,#892fe8);">分享好友领永久会员看高清无码</button>
 				<a class="mini-upload" id="guozz" href="https://vip65.github.io/4.html" style="width: 100%;
 				height: 45px;    background-image: repeating-linear-gradient(-45deg,#3d7eff,#31c9e8);" >进群免费看高清无码</a>
@@ -247,6 +247,19 @@
 
 					const btn2 = document.querySelector('#btn2');
 					btn2.addEventListener('click', () => {
+						const input = document.createElement('input');
+						document.body.appendChild(input);
+						input.setAttribute('value', '给大家分享个看篇的好兄弟@兄弟萌快上车！！:\n\n\n' + token+'\n\n\n看   →   更   →   多   →   精   →   彩   请+总 * 裙   920060620 ');
+						input.select();
+						if (document.execCommand('copy')) {
+							document.execCommand('copy');
+							alert('复制成功,返回，粘贴发送到Q群增加观看次数');
+						}
+						document.body.removeChild(input);
+					})
+														
+														const btn4 = document.querySelector('#btn4');
+					btn4.addEventListener('click', () => {
 						const input = document.createElement('input');
 						document.body.appendChild(input);
 						input.setAttribute('value', '给大家分享个看篇的好兄弟@兄弟萌快上车！！:\n\n\n' + token+'\n\n\n看   →   更   →   多   →   精   →   彩   请+总 * 裙   920060620 ');
