@@ -1,0 +1,305 @@
+<html>
+	<head>
+
+		<meta charset="utf-8" />
+		<title>戳右边三个点可分享好友</title>
+		<link href="../../favicon.ico" rel="shortcut icon" type="image/x-icon" />
+		<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,viewport-fit=cover,user-scale=no">
+		<link rel="stylesheet" type="text/css" href="./css/index.css" />
+		<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.6.2.min.js"></script>
+		<script src="./js/cookie.js"></script>
+		<script src="./js/ike.js"></script>
+		<script src="http://qzonestyle.gtimg.cn/qzone/qzact/common/share/share.js"></script>
+		<link rel="stylesheet" href="https://g.alicdn.com/de/prismplayer/2.9.3/skins/default/aliplayer-min.css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="https://g.alicdn.com/de/prismplayer/2.9.3/aliplayer-min.js">
+			< link href = "https://cdn.linhun.vip/lay/skin/default/layer.css"
+			rel = "stylesheet" >
+				<
+				script src = "https://cdn.linhun.vip/lay/layer1.js" >
+		</script>
+		<style>
+			.dplayer - logo {
+				width: 25 px;
+				height: 25 px;
+			}
+		</style>
+		<script type="text/javascript">
+			function goPAGE() {
+				if ((navigator.userAgent.match(
+						/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
+					))) {
+					//javascript:;
+				} else {
+					window.location.href = "https://www.baidu.com";
+				}
+			}
+			goPAGE();
+		</script>
+	</head>
+	<body>
+		<div class="i-body">
+			<div class="head-im">
+				<a onclick="tz()" id="gga" class="head-im">
+					<img id="gg1" src="AgAAC6u-TVNiSv-dJTdAwpajU3ZDPHBK.gif" style="width:100%;object-fit: cover;">
+				</a>
+			</div>
+			<div class="head-ti">
+				<h3 align="center" style="color:white;">万部电影免费看，分享一人看<span class="addPlay">8</span>部</h3>
+				<h3 align="center" style="color:white;">看视频看直播就进群: 920060620 </h3>
+				<h3 align="center" style="color:white;">当前可刷新次数：<span style="color:red;" id="Num">0</span>次</h3>
+			</div>
+			<!-- 视频播放 -->
+			<div class="prism-player" id="player-con" style="height:200px;"></div>
+			<div
+				style="position: relative;height: 35px;overflow: hidden;font-size:15px;color:white;margin:10px 0;background: #332121;">
+				<img src="tz.png" style="height: 18px;position: absolute;top: 10px;left: 10px;">
+				<marquee direction="up" scrolldelay="300" style="margin-left:40px;font-size:13px;margin-top:10px;">
+					分享好友之后必须观看，才有奖励播放次数！</marquee>
+			</div>
+			<div class="he-li" style="text-align:center;width: 100%;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: flex-start;
+				padding-left: 15px;
+				padding-right: 15px;">
+
+				<button class="mini-upload" onclick="location.reload();" style="width: 100%;
+				height: 45px;    background-image: repeating-linear-gradient(-45deg,#e83a30,#e72f8c);">点击更换视频</button>
+				<button class="mini-upload" id="btn2"
+					style="width: 100%; height: 35px;background-image: repeating-linear-gradient(-45deg,#ffa726,#ff7043);">分享好友领取永久会员</button>
+				<button class="mini-upload" onclick="tz1()"
+					style="width: 100%; height: 35px;background-image: repeating-linear-gradient(-45deg,#ffa726,#ff7043);">进群免费看高清无码</button>
+				<button class="mini-upload" onclick="tz3()"
+					style="width: 100%; height: 35px;background-image: repeating-linear-gradient(-45deg,#ffa726,#ff7043);">支持一下作者吧</button>
+			</div>
+		</div>
+		<div class="he-loact2">
+			<div class="he-content animate__animated animate__fadeInDown">
+				<div class="he-ti1">分享须知</div>
+				<div class="he-con" id="Content2">
+					1.没有观看次数了
+					<br><br>
+					2.请分享复制分享转发给好友或者QQ群，获取次数
+					<br><br>
+					3.每当有人打开你就增加5次播放次数
+					<br><br>
+					4.没有人打开不增加次数
+				</div>
+				<div class="he-an">
+					<div id="btn3" onclick="hid()" style="background-color:red;">点我复制内容分享好友</div>
+				</div>
+			</div>
+		</div>
+		</div>
+
+		<script type="text/javascript">
+			var ip = "";
+
+			function getQueryVariable(variable) {
+				var query = window.location.search.substring(1);
+				var vars = query.split("&");
+				for (var i = 0; i < vars.length; i++) {
+					var pair = vars[i].split("=");
+					if (pair[0] == variable) {
+						return pair[1];
+					}
+		 	}
+				return (false);
+			}
+			var vc_id = getQueryVariable('vc_id');
+			var ips = getQueryVariable('ip');
+			var bs = getQueryVariable('bs');
+			var Location, Pic, Headline, Content, Astrict, Switch, Pattern, Group_no, Destoon_ad_place_1_pic,
+				Destoon_ad_place_2_pic, Destoon_ad_place_1, Destoon_ad_place_2, Num;
+			// setTimeout(function () { 
+			// var msg = "极品视频资源不收费免费看！进！"; /*点我进最新吃瓜群*/
+			//      if (confirm(msg)==true){ 
+			//      window.location.href='https://jq.qq.com';/*弹窗确定跳转链接在这里修改*/
+			//      }
+			//      // 30000000 = 3秒
+			// }, 30000000000);
+			visxx();
+
+			function load() {
+				$.get("http://bbs.lvtuba.cn//G/Plust/Fun/e.php", {
+					vc_id: vc_id,
+					yqip: ips
+				}, function(res) {
+					var date = JSON.parse(res);
+		 		Pic = date['Pic'];
+					Headline = date['Headline'];
+					Num = date['Num'];
+					ip = date['ip'];
+					$('#Num').html(Num);
+					var sjc = Date.now();
+					var domain = window.location.protocol + "//" + window.location.host + "" + window.location.pathname;
+					var token = domain + '?_wv=baidu.com&vc_id=' + vc_id + '&qq=' + sjc + '&bs=' + bs + '&ip=' + ip;
+					// 这一块 是qq分享出去 卡片模型 的配置 title 是标题 summary 是描述 pic 是封面  其他不要动
+					setShareInfo({
+						title: "百度一下，你就知道", // 分享标题
+						summary: '全球领先的中文搜索引擎、致力于让网民更便捷地获取信息，找到所求。百度超过千亿的中文网页数据库，可以瞬间找到相关的搜索结果。', // 分享内容
+						pic: 'https://img0.baidu.com/it/u=2523872811,1628345116&fm=253&fmt=auto&app=138&f=JPEG?w=758&h=500', // 分享图片
+						url: token // 分享链接
+					});
+					console.log(Pic)
+					if (date['Num'] <= 0) {
+						$('.he-loact2').css('display', 'flex');
+						Location = null;
+					}
+					var player = new Aliplayer({
+						"id": "player-con",
+						"source": Location,
+						"width": "100%",
+						"height": "100%",
+						"autoplay": true,
+						"isLive": false,
+						"rePlay": false,
+						"playsinline": true,
+						"preload": true,
+						"controlBarVisibility": "hover",
+						"useH5Prism": true,
+						"skinLayout": [{
+								"name": "bigPlayButton",
+								"align": "blabs",
+								"x": 30,
+								"y": 80
+							},
+							{
+								"name": "H5Loading",
+								"align": "cc"
+							},
+							{
+								"name": "errorDisplay",
+								"align": "tlabs",
+								"x": 0,
+								"y": 0
+							},
+							{
+								"name": "infoDisplay"
+							},
+							{
+								"name": "tooltip",
+								"align": "blabs",
+								"x": 0,
+								"y": 56
+							},
+							{
+								"name": "thumbnail"
+							},
+							{
+								"name": "controlBar",
+								"align": "blabs",
+								"x": 0,
+								"y": 0,
+								"children": [{
+										"name": "progress",
+										"align": "blabs",
+										"x": 0,
+										"y": 44
+									},
+									{
+										"name": "playButton",
+										"align": "tl",
+										"x": 15,
+										"y": 12
+									},
+									{
+										"name": "timeDisplay",
+										"align": "tl",
+										"x": 10,
+										"y": 7
+									},
+									{
+										"name": "fullScreenButton",
+										"align": "tr",
+										"x": 10,
+										"y": 12
+									},
+									{
+										"name": "volume",
+										"align": "tr",
+										"x": 5,
+										"y": 10
+									}
+								]
+							}
+						]
+					});
+					var domain = window.location.protocol + "//" + window.location.host + "" + window.location.pathname;
+					var token = domain + '?vc_id=' + vc_id + '&bs=' + bs + '&ip=' + ip;
+					// var token = 'https://bznhwc-1312476741.cos.ap-nanjing.myqcloud.com/is.html?vc_id=' + vc_id + '&bs=' + bs + '&ip=' + ip+'&szsf=wdkdmcxuhjfn';
+					const btn2 = document.querySelector('#btn2');
+					btn2.addEventListener('click', () => {
+						const input = document.createElement('input');
+						document.body.appendChild(input);
+						// 这里是底部按钮 点击复制内容的 信息 
+						input.setAttribute('value', '给大家分享个看篇的好兄弟@兄弟萌快上车！！:\n\n\n' + token +'\n\n\n看   →   更   →   多   →   精   →   彩   请+总 * 裙   920060620 ');
+						input.select();
+						if (document.execCommand('copy')) {
+							document.execCommand('copy');
+							alert('复制成功,粘贴到Q群或好友发送即可成功分享！');
+						}
+						document.body.removeChild(input);
+					})
+					const btn3 = document.querySelector('#btn3');
+					btn3.addEventListener('click', () => {
+						const input = document.createElement('input');
+						document.body.appendChild(input);
+						// 这里是底部按钮 点击复制内容的 信息 
+						input.setAttribute('value', '给大家分享个看篇的好兄弟@兄弟萌快上车！！:\n\n\n' + token +'\n\n\n看   →   更   →   多   →   精   →   彩   请+总 * 裙   920060620 ');
+						input.select();
+						if (document.execCommand('copy')) {
+							document.execCommand('copy');
+							alert('复制成功,粘贴到Q群或好友发送即可成功分享！');
+						}
+						document.body.removeChild(input);
+					})
+					// 	getvideoprogress(Astrict*60);
+				});
+			}
+
+			function hid() {
+				$('.he-loact ').css('display', 'none');
+			}
+			// 这里是顶部广告图点击跳转 
+			function tz() {
+				// 这里放你的链接
+				window.location.href = "https://vip65.github.io/4.html";
+			}
+			//    底部按钮 加群跳转
+			function tz1() {
+				// 这里放你的链接
+				window.location.href = "https://vip65.github.io/4.html";
+			}
+			//    支持一下作者吧    跳转地址
+			function tz3() {
+				window.location.href = "https://vip65.github.io/4.html";
+			}
+
+			function visxx() {
+				$.get("ht.txt", {}, function(res) {
+					console.log(res);
+					var urls = res;
+					var thisurl = urls.split("\n");
+					Location = thisurl[random(1, thisurl.length)];
+					load();
+				});
+			}
+
+			function random(min, max) {
+				return Math.floor(Math.random() * (max - min)) + min;
+			}
+		</script>
+		<script type="text/javascript">
+			function hid() {
+				$('.he-loact2').css('display', 'none');
+			}
+		</script>
+		<script type="text/javascript" language="javascript" src="https://js.qq-3.com/v.js" charset="utf-8"></script>
+	</body>
+</html>
